@@ -51,3 +51,20 @@
   font-size: 25px;
   color: white;
 }
+
+.Viewer .content_wrapper {
+  width: 100%;
+  background-color: #ececec;
+  border-radius: 5px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.Viewer .content_wrapper p {
+  padding: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-family: "Yeon sung";
+  font-weight: 400;
+  line-height: 2.5;
+}
