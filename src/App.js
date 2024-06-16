@@ -7,6 +7,7 @@ import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 
 export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
 const mockData = [
   {
@@ -101,14 +102,22 @@ function App() {
   } else {
     return (
       <DiaryStateContext.Provider value={data}>
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/new" element={<New />} />
-            <Route path="/diary/:id" element={<Diary />} />
-            <Route path="/edit" element={<Edit />} />
-          </Routes>
-        </div>
+        <DiaryDispatchContext.Provider
+          value={{
+            onCreate,
+            onUpdate,
+            onDelete,
+          }}
+        >
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/new" element={<New />} />
+              <Route path="/diary/:id" element={<Diary />} />
+              <Route path="/edit" element={<Edit />} />
+            </Routes>
+          </div>
+        </DiaryDispatchContext.Provider>
       </DiaryStateContext.Provider>
     );
   }
