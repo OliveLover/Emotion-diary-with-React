@@ -39,7 +39,7 @@ const Edit = () => {
             />
           }
         />
-        <Editor />
+        <Editor initData={data} />
       </div>
     );
   }

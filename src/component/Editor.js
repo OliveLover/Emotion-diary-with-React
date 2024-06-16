@@ -77,7 +77,7 @@ const Editor = ({ initData, onSubmit }) => {
         <div className="input_wrapper">
           <textarea
             placeholder="오늘은 어땠나요?"
-            vlaue={state.content}
+            value={state.content}
             onChange={handleChangeContent}
           />
         </div>
