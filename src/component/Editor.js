@@ -1,11 +1,28 @@
 import "./Editor.css";
+import { useState } from "react";
+import { getFormattedDate } from "../util";
 
 const Editor = ({ initData, onsubmit }) => {
+  const [state, setState] = useState({
+    date: getFormattedDate(new Date()),
+    emotionId: 3,
+    content: "",
+  });
+
+  const handleChangeDate = (e) => {
+    setState({
+      ...state,
+      date: e.target.value,
+    });
+  };
+
   return (
     <div className="Editor">
       <div className="editor_section">
-        {/* 날짜 */}
         <h4>오늘의 날짜</h4>
+        <div className="input_wrapper">
+          <input type="date" value={state.date} onChange={handleChangeDate} />
+        </div>
       </div>
       <div className="editor_section">
         {/* 감정 */}
