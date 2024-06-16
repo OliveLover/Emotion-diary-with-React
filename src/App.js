@@ -44,7 +44,7 @@ function reducer(state, action) {
       );
     }
     case "DELETE": {
-      return state.map((it) => String(it.id) !== String(action.targetId));
+      return state.filter((it) => String(it.id) !== String(action.targetId));
     }
     default: {
       return state;
