@@ -5,3 +5,31 @@
   display: flex;
   justify-content: space-between;
 }
+
+.DiaryItem .img_section {
+  cursor: pointer;
+  min-width: 120px;
+  height: 80px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.DiaryItem .img_section_1 {
+  background-color: #64c964;
+}
+.DiaryItem .img_section_2 {
+  background-color: #9dd772;
+}
+.DiaryItem .img_section_3 {
+  background-color: #fdce17;
+}
+.DiaryItem .img_section_4 {
+  background-color: #fd8446;
+}
+.DiaryItem .img_section_5 {
+  background-color: #fd565f;
+}
+.DiaryItem .img_section img {
+  width: 50%;
+}
