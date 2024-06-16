@@ -1,10 +1,12 @@
-import { useReducer, useRef, useEffect, useState } from "react";
+import React, { useReducer, useRef, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
+
+export const DiaryStateContext = React.createContext();
 
 const mockData = [
   {
@@ -98,14 +100,16 @@ function App() {
     return <di>데이터를 불러오는 중입니다</di>;
   } else {
     return (
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/new" element={<New />} />
-          <Route path="/diary/:id" element={<Diary />} />
-          <Route path="/edit" element={<Edit />} />
-        </Routes>
-      </div>
+      <DiaryStateContext.Provider value={data}>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/new" element={<New />} />
+            <Route path="/diary/:id" element={<Diary />} />
+            <Route path="/edit" element={<Edit />} />
+          </Routes>
+        </div>
+      </DiaryStateContext.Provider>
     );
   }
 }
