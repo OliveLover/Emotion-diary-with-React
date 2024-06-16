@@ -1,11 +1,17 @@
-import { Route, Routes, Link } from "react-router-dom";
+import { useReducer } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 
+function reducer(state, action) {
+  return state;
+}
+
 function App() {
+  const [data, dispatch] = useReducer(reducer, []);
   return (
     <div className="App">
       <Routes>
@@ -14,12 +20,6 @@ function App() {
         <Route path="/diary/:id" element={<Diary />} />
         <Route path="/edit" element={<Edit />} />
       </Routes>
-      <div>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/new"}>New</Link>
-        <Link to={"/diary"}>Diary</Link>
-        <Link to={"/edit"}>Edit</Link>
-      </div>
     </div>
   );
 }
