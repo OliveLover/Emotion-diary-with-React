@@ -1,4 +1,4 @@
-import { useReducer, useRef, useEffect } from "react";
+import { useReducer, useRef, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -50,6 +50,7 @@ function reducer(state, action) {
 }
 
 function App() {
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
 
@@ -58,6 +59,7 @@ function App() {
       type: "INIT",
       data: mockData,
     });
+    setIsDataLoaded(true);
   }, []);
 
   const onCreate = (date, content, emotionId) => {
@@ -92,16 +94,20 @@ function App() {
     });
   };
 
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/diary/:id" element={<Diary />} />
-        <Route path="/edit" element={<Edit />} />
-      </Routes>
-    </div>
-  );
+  if (!isDataLoaded) {
+    return <di>데이터를 불러오는 중입니다</di>;
+  } else {
+    return (
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/new" element={<New />} />
+          <Route path="/diary/:id" element={<Diary />} />
+          <Route path="/edit" element={<Edit />} />
+        </Routes>
+      </div>
+    );
+  }
 }
 
 export default App;
