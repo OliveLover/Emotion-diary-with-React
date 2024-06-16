@@ -1,4 +1,4 @@
-import { useReducer, useRef } from "react";
+import { useReducer, useRef, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
@@ -6,8 +6,32 @@ import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 
+const mockData = [
+  {
+    id: "mock1",
+    date: new Date().getTime(),
+    content: "mock1",
+    emotionId: 1,
+  },
+  {
+    id: "mock2",
+    date: new Date().getTime(),
+    content: "mock2",
+    emotionId: 2,
+  },
+  {
+    id: "mock3",
+    date: new Date().getTime(),
+    content: "mock3",
+    emotionId: 3,
+  },
+];
+
 function reducer(state, action) {
   switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
     case "CREATE": {
       return [action.data, ...state];
     }
@@ -28,6 +52,13 @@ function reducer(state, action) {
 function App() {
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
+
+  useEffect(() => {
+    dispatch({
+      type: "INIT",
+      data: mockData,
+    });
+  }, []);
 
   const onCreate = (date, content, emotionId) => {
     dispatch({
