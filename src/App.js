@@ -16,6 +16,9 @@ function reducer(state, action) {
         String(it.id) === String(action.data.id) ? { ...action.data } : it
       );
     }
+    case "DELETE": {
+      return state.map((it) => String(it.id) !== String(action.targetId));
+    }
     default: {
       return state;
     }
@@ -48,6 +51,13 @@ function App() {
         content,
         emotionId,
       },
+    });
+  };
+
+  const onDelete = (targetId) => {
+    dispatch({
+      type: "DELETE",
+      targetId,
     });
   };
 
