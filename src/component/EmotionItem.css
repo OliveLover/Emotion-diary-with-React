@@ -16,3 +16,32 @@
 .EmotionItem span {
   font-size: 18px;
 }
+
+.EmotionItem_off {
+  background-color: #ececec;
+}
+
+.EmotionItem_on_1 {
+  background-color: #64c964;
+  color: white;
+}
+
+.EmotionItem_on_2 {
+  background-color: #9dd772;
+  color: white;
+}
+
+.EmotionItem_on_3 {
+  background-color: #fdce17;
+  color: white;
+}
+
+.EmotionItem_on_4 {
+  background-color: #fd8466;
+  columns: white;
+}
+
+.EmotionItem_on_5 {
+  background-color: #fd454f;
+  color: white;
+}
