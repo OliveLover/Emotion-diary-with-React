@@ -1,12 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { getEmotionImgById } from "../util";
 import "./DiaryItem.css";
+import Button from "./Button";
 
 const DiaryItem = ({ id, emotionId, content, date }) => {
   const navigate = useNavigate();
   const goDetail = () => {
     navigate(`/diary/${id}`);
   };
+
+  const goEdit = () => {
+    navigate(`/edit/${id}`);
+  };
+
   return (
     <div className="DiaryItem">
       <div
@@ -20,6 +26,9 @@ const DiaryItem = ({ id, emotionId, content, date }) => {
           {new Date(parseInt(date)).toLocaleDateString()}
         </div>
         <div className="content_wrapper">{content.slice(0, 25)}</div>
+      </div>
+      <div className="button_section">
+        <Button onClick={goEdit} text={"수정하기"} />
       </div>
     </div>
   );

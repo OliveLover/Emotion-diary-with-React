@@ -49,3 +49,7 @@
 .DiaryItem .info_section .content_wrapper {
   font-size: 18px;
 }
+
+.DiaryItem .button_section {
+  min-width: 70px;
+}
