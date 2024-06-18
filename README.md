@@ -228,4 +228,36 @@ const Home = () => {
 
 <h2>7. 리액트 라우터로 동적 경로 라우팅하기</h2>
 
-<p>웹 스토리지(Web Storage)는 웹브라우저가 제공하는 데이터베이스라고 할 수 있습니다. 브라우저에는 쿠키, 웹 스토리지, indexDB 등에 활용할 다양한 저장 공간이 있습니다.</p>
+<p>웹 스토리지(Web Storage)는 웹브라우저가 제공하는 데이터베이스라고 할 수 있습니다. 브라우저에는 쿠키, 웹 스토리지, indexDB 등에 활용할 다양한 저장 공간이 있습니다. 웹 스토리지는 HTML5의 새로운 기능입니다. 웹 스토리진는 쿠키 기능과 매우 비슷합니다. 다만 쿠키가 저장할 수 있는 공간이 4KB인 반면, 웹 스토리지는 약 5MB의 데이터를 저장할 수 있습니다. 웹 스토리지는 자바 스크립트 객체처럼 키(key)와 값(value) 쌍으로 이루어진 데이터를 저장합니다. </p>
+<h4>로컬 스토리지(Local Storage)</h4>
+<p><code>window.localStorage</code>명령을 사용하며, 저장한 데이터는 브라우저를 종료해도 유지됩니다. 직접 삭제하지 않는 한, 저장 데이터는 반영구적으로 보관할 수 있습니다. 또한 로컬 슽리지는 도메인별로도 생성할 수 있는데, 주소가 다르면 해당 도메인의 로컬 스토리지에는 접근할 수 없습니다. 탭이 다르더라도 도메인 주소가 같다면 같은 로컬스토리지를 사용할 수 있습니다.</p>
+
+```
+localStorage.setItem("key", value); // 데이터 저장
+
+localStorage.setItem("key", JSON.stringify(value)); // value가 참조형 객체일 경우 JSON.stringify 메서드를 사용합니다.
+
+localStorage.getItem("key"); // 데이터 꺼내기
+
+const data = JSON.parse(localStorage.getItem("key")); // JSON.stringify 메서드로 객체를 문자열로 변환한 경우에 사용합니다.
+
+localStorage.removeItem("key"); // 데이터 지우기
+```
+<br />
+<h4>세션 스토리지(Session Storage)</h4>
+<p><code>window.sessionStorage</code> 명령으로 사용하며, 세션 스토리지는 탭 단위로 데이터를 보관하는 방식으로 탭을 종료하면 데이터도 삭제돕니다. 당연히 브라우저를 종료하면 세션 스토리지에 보관된 데이터 역시 모두 삭제됩니다. 탭을 종료하지 않으면 직접 데이터를 삭제하지 않는 한, 데이터를 계속 보관할 수 있습니다. 즉, 새로고침이 발생해도 탭을 종료하지 않는 이상 데이터는 삭제되지 않습니다.</code></p>
+
+```
+sessionStorage.setItem("key", value); // 데이터 저장
+
+sessionStorage.setItem("key", JSON.stringify(value)); // value가 객체일 경우 문자열로 변환해 저장
+
+sessionStorage.getItem("key"); // 데이터 꺼내기
+
+const rawData = sessionStorage.getItem("key");
+if(rawData) {
+  const data = JSON.parse(rawData);
+}
+
+sessionStorage.removeItem("key"); // 데이터 지우기
+```
